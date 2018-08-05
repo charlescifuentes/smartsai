@@ -325,21 +325,21 @@ class Creportes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    /* ------------------ Reporte Egresos Detallado --------------------------------- */
+    /* ------------------ Reporte Egresos Fijos Detallado --------------------------------- */
 
-    public function report_egresos_detalle()
+    public function report_egresosf_detalle()
     {
-        $data['title'] = "Formulario Reporte de Egresos Detallado";
+        $data['title'] = "Formulario Reporte de Egresos Fijos Detallado";
 
         $data['tegresos'] = $this->mopciones->get_tipos_egreso();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/detallado/vreportes_egresos_detalle_form', $data);
+        $this->load->view('reportes/egresos_fijos/detallado/vreportes_egresosf_detalle_form', $data);
         $this->load->view('templates/footer');
     }
 
-    public function report_egresos_detalle_result()
+    public function report_egresosf_detalle_result()
     {
         $data['fecha_desde'] = $this->input->post('fecha_desde');
         $data['fecha_hasta'] = $this->input->post('fecha_hasta');
@@ -349,15 +349,15 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_egresos'] = 0;
 
-        $data['title'] = "Reporte de Egresos Detallado Resultado";
+        $data['title'] = "Reporte de Egresos Fijos Detallado Resultado";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/detallado/vreportes_egresos_detalle_result',$data);
+        $this->load->view('reportes/egresos_fijos/detallado/vreportes_egresosf_detalle_result',$data);
         $this->load->view('templates/footer');
     }
 
-    public function impr_rep_egresos_detalle($fecha_desde, $fecha_hasta, $tipo_egreso)
+    public function impr_rep_egresosf_detalle($fecha_desde, $fecha_hasta, $tipo_egreso)
     {
         $data['fecha_desde'] = $fecha_desde;
         $data['fecha_hasta'] = $fecha_hasta;
@@ -367,29 +367,29 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_egresos'] = 0;
 
-        $data['title'] = "Reporte de Egresos Detallado Impresión";
+        $data['title'] = "Reporte de Egresos Fijos Detallado Impresión";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/detallado/vreportes_egresos_detalle_print',$data);
+        $this->load->view('reportes/egresos_fijos/detallado/vreportes_egresosf_detalle_print',$data);
         $this->load->view('templates/footer');
     }
 
-    /* ------------------ Reporte Egresos Resumido --------------------------------- */
+    /* ------------------ Reporte Egresos Fijos Resumido --------------------------------- */
 
-    public function report_egresos_resumen()
+    public function report_egresosf_resumen()
     {
-        $data['title'] = "Formulario Reporte de Egresos Resumidos";
+        $data['title'] = "Formulario Reporte de Egresos Fijos Resumidos";
 
         $data['tegresos'] = $this->mopciones->get_tipos_egreso();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/resumido/vreportes_egresos_resumen_form', $data);
+        $this->load->view('reportes/egresos_fijos/resumido/vreportes_egresosf_resumen_form', $data);
         $this->load->view('templates/footer');
     }
 
-    public function report_egresos_resumen_result()
+    public function report_egresosf_resumen_result()
     {
         $data['fecha_desde'] = $this->input->post('fecha_desde');
         $data['fecha_hasta'] = $this->input->post('fecha_hasta');
@@ -399,15 +399,15 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_egresos'] = 0;
 
-        $data['title'] = "Reporte de Egresos Resumidos";
+        $data['title'] = "Reporte de Egresos Fijos Resumidos";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/resumido/vreportes_egresos_resumen_result',$data);
+        $this->load->view('reportes/egresos_fijos/resumido/vreportes_egresosf_resumen_result',$data);
         $this->load->view('templates/footer');
     }
 
-    public function impr_rep_egresos_resumen($fecha_desde, $fecha_hasta, $tipo_egreso)
+    public function impr_rep_egresosf_resumen($fecha_desde, $fecha_hasta, $tipo_egreso)
     {
         $data['fecha_desde'] = $fecha_desde;
         $data['fecha_hasta'] = $fecha_hasta;
@@ -417,11 +417,111 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_egresos'] = 0;
 
-        $data['title'] = "Reporte de Egresos Resumidos - Impresión";
+        $data['title'] = "Reporte de Egresos Fijos Resumidos - Impresión";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/egresos/resumido/vreportes_egresos_resumen_print',$data);
+        $this->load->view('reportes/egresos_fijos/resumido/vreportes_egresosf_resumen_print',$data);
+        $this->load->view('templates/footer');
+    }
+
+    /* ------------------ Reporte Egresos Variables Detallado --------------------------------- */
+
+    public function report_egresosv_detalle()
+    {
+        $data['title'] = "Formulario Reporte de Egresos Variables Detallado";
+
+        $data['tegresos'] = $this->mopciones->get_tipos_egreso();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/detallado/vreportes_egresosv_detalle_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_egresosv_detalle_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['tipo_egreso'] = $this->input->post('tipo_egreso');
+
+        $data['results'] = $this->mreportes->egresosv_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Egresos Variables Detallado Resultado";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/detallado/vreportes_egresosv_detalle_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_egresosv_detalle($fecha_desde, $fecha_hasta, $tipo_egreso)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['tipo_egreso'] = $tipo_egreso;
+
+        $data['results'] = $this->mreportes->egresosv_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Egresos Variables Detallado Impresión";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/detallado/vreportes_egresosv_detalle_print',$data);
+        $this->load->view('templates/footer');
+    }
+
+    /* ------------------ Reporte Egresos Variables Resumido --------------------------------- */
+
+    public function report_egresosv_resumen()
+    {
+        $data['title'] = "Formulario Reporte de Egresos Variables Resumidos";
+
+        $data['tegresos'] = $this->mopciones->get_tipos_egreso();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/resumido/vreportes_egresosv_resumen_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_egresosv_resumen_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['tipo_egreso'] = $this->input->post('tipo_egreso');
+
+        $data['results'] = $this->mreportes->egresosv_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Egresos Variables Resumidos";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/resumido/vreportes_egresosv_resumen_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_egresosv_resumen($fecha_desde, $fecha_hasta, $tipo_egreso)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['tipo_egreso'] = $tipo_egreso;
+
+        $data['results'] = $this->mreportes->egresosv_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Egresos Variables Resumidos - Impresión";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/egresos_variables/resumido/vreportes_egresosv_resumen_print',$data);
         $this->load->view('templates/footer');
     }
 }

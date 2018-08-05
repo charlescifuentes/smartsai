@@ -75,14 +75,25 @@
               </ul>
             </li>
             <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Egresos
+              <a href="#"><i class="fa fa-circle-o"></i> Egresos Fijos
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url('creportes/report_egresos_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
-                <li><a href="<?php echo base_url('creportes/report_egresos_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
+                <li><a href="<?php echo base_url('creportes/report_egresosf_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
+                <li><a href="<?php echo base_url('creportes/report_egresosf_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Egresos Variables
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url('creportes/report_egresosv_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
+                <li><a href="<?php echo base_url('creportes/report_egresosv_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
               </ul>
             </li>
           </ul>

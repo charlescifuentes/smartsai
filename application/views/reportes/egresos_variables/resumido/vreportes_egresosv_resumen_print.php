@@ -2,52 +2,47 @@
     <section class="content-header">
       <h1>
         <?php echo $title ?>
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('chome');?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo base_url('creportes/report_egresos_resumen');?>"><i class="fa fa-dashboard"></i> Reporte Egresos Resumen</a></li>
-        <li class="active">Reporte de Egresos Resumido</li>
+        <li><a href="<?php echo base_url('creportes/report_egresosv_resumen');?>"><i class="fa fa-dashboard"></i> Reportes Egresos Resumen Print</a></li>
+        <li class="active"><?php echo $title ?></li>
       </ol>
     </section>
 
-    <!-- Main content -->
+    <div class="pad margin no-print">
+      <div class="callout callout-info" style="margin-bottom: 0!important;">
+        <h4><i class="fa fa-info"></i> Nota:</h4>
+        Este informe es para impresión
+      </div>
+    </div>
+
     <section class="content">
      <!-- /.row -->
       <div class="row">
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title"></h3>
-              <?php date_default_timezone_set('America/Bogota'); ?>
               <h3 class="box-title">Reporte de Egresos</h3>
-              <?php echo anchor('creportes/impr_rep_egresos_resumen/'.$fecha_desde.'/'.$fecha_hasta.'/'.$tipo_egreso.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
             </div>
             <div class="box-body">
-              <div class="table-responsive">
-              <table id="example1" class="table table-bordered table-striped table-hover">
+             <table class="table table-bordered">
               <thead>
+               <tr>
+                <th>Tipo de Egreso</th>
+                <th>Total</th>
+              </thead>
+              <tbody>
+               <?php foreach($results as $result): ?>
                 <tr>
-                  <th>Tipo de Egreso</th>
-                  <th>Valor</th>
-                </tr>
-               </thead>
-               <tbody id="myTable">
-                <?php foreach($results as $result): ?>
-                <tr>
-                  <td><?php echo $result['nombre'] ?></td>
-                  <td><?php echo "$ ".number_format($result['total'],0,',','.'); ?></td>
+                  <td><p style="font-size:12px;"><?php echo $result['nombre'] ?></p></td>
+                  <td><p style="font-size:12px;"><?php echo "$ ".number_format($result['total'],0,',','.'); ?></p></td>
                   <?php $total_valor_egresos += $result['total'] ?>
                 </tr>
                 <?php endforeach; ?>
-               </tbody>
-               <tfoot>
-                <tr>
-                  <th>Tipo de Egreso</th>
-                  <th>Valor</th>
-                </tr>
-               </tfoot>
+              </tbody>
              </table>
-             </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -56,7 +51,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      
+
       <!-- CUADRO DE TOTALES -->
 
       <!-- Small boxes (Stat box) -->
@@ -66,7 +61,6 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3><?php echo "$ ".number_format($total_valor_egresos,0,',','.'); ?></h3>
-
               <p>TOTAL EGRESOS</p>
             </div>
             <div class="icon">
@@ -80,7 +74,6 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3><sup style="font-size: 20px">Del </sup><?php echo date("d-m-Y", strtotime($fecha_desde)); ?><sup style="font-size: 20px"> Al </sup><?php echo date("d-m-Y", strtotime($fecha_hasta)); ?></h3>
-
               <p>RANGO</p>
             </div>
             <div class="icon">
@@ -91,5 +84,20 @@
         <!-- ./col -->
       </div>
       <!-- /.row -->
+
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="" class="btn btn-primary pull-right" style="margin-right: 5px;" onclick="myFunction()">
+            <i class="fa fa-print"></i>Imprimir
+          </a>
+        </div>
+      </div>
     </section>
     <!-- /.content -->
+
+    <script>
+        function myFunction(){
+            window.print();
+        }
+    </script>

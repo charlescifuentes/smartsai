@@ -68,7 +68,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Fijos Detallado--------------------------------- */
+        /* ------------------ Reporte Ingresos Fijos Detallado --------------------------------- */
         public function ingresos_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_ingresos.id AS id_ingreso, sai_ingresos.fecha, sai_tipo_ingresos.id AS id_tipo_ingreso, sai_tipo_ingresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_ingresos.valor, sai_ingresos.observacion');
@@ -84,7 +84,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Fijos Resumido--------------------------------- */
+        /* ------------------ Reporte Ingresos Fijos Resumido --------------------------------- */
         public function ingresos_report_resumen($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
@@ -100,7 +100,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Variables Detallado--------------------------------- */
+        /* ------------------ Reporte Ingresos Variables Detallado --------------------------------- */
         public function ingresosv_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_ingresos.id AS id_ingreso, sai_ingresos.fecha, sai_tipo_ingresos.id AS id_tipo_ingreso, sai_tipo_ingresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_ingresos.valor, sai_ingresos.observacion');
@@ -116,7 +116,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Variables Resumido--------------------------------- */
+        /* ------------------ Reporte Ingresos Variables Resumido --------------------------------- */
         public function ingresosv_report_resumen($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
@@ -132,7 +132,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Egresos Detallado--------------------------------- */
+        /* ------------------ Reporte Egresos Fijos Detallado --------------------------------- */
         public function egresos_report($fecha_desde, $fechas_hasta, $tipo_egreso)
         {   
             $this->db->select('sai_egresos.id AS id_egreso, sai_egresos.fecha, sai_tipo_egresos.id AS id_tipo_egreso, sai_tipo_egresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_egresos.valor, sai_egresos.observacion');
@@ -141,13 +141,14 @@ class Mreportes extends CI_Model {
             $this->db->join('sai_clientes','sai_clientes.id_cliente = sai_egresos.id_tercero');
             $this->db->where('sai_egresos.fecha >=', $fecha_desde);
             $this->db->where('sai_egresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_egresos.nombre <>','Distribución de Comisiones');
             if($tipo_egreso != "null"){
             $this->db->where('id_tipo_egreso', $tipo_egreso);
             }
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Egresos Resumido--------------------------------- */
+        /* ------------------ Reporte Egresos Fijos Resumido --------------------------------- */
         public function egresos_report_resumen($fecha_desde, $fechas_hasta, $tipo_egreso)
         {   
             $this->db->select('sai_tipo_egresos.nombre, SUM(sai_egresos.valor) AS total');
@@ -155,6 +156,39 @@ class Mreportes extends CI_Model {
             $this->db->join('sai_tipo_egresos','sai_tipo_egresos.id = sai_egresos.id_tipo_egreso');
             $this->db->where('sai_egresos.fecha >=', $fecha_desde);
             $this->db->where('sai_egresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_egresos.nombre <>','Distribución de Comisiones');
+            if($tipo_egreso != "null"){
+            $this->db->where('id_tipo_egreso', $tipo_egreso);
+            }
+            $this->db->group_by('sai_tipo_egresos.nombre');
+            return $query = $this->db->get()->result_array();
+        }
+
+        /* ------------------ Reporte Egresos Variables Detallado --------------------------------- */
+        public function egresosv_report($fecha_desde, $fechas_hasta, $tipo_egreso)
+        {   
+            $this->db->select('sai_egresos.id AS id_egreso, sai_egresos.fecha, sai_tipo_egresos.id AS id_tipo_egreso, sai_tipo_egresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_egresos.valor, sai_egresos.observacion');
+    	    $this->db->from('sai_egresos');
+            $this->db->join('sai_tipo_egresos','sai_tipo_egresos.id = sai_egresos.id_tipo_egreso');
+            $this->db->join('sai_clientes','sai_clientes.id_cliente = sai_egresos.id_tercero');
+            $this->db->where('sai_egresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_egresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_egresos.nombre =','Distribución de Comisiones');
+            if($tipo_egreso != "null"){
+            $this->db->where('id_tipo_egreso', $tipo_egreso);
+            }
+            return $query = $this->db->get()->result_array();
+        }
+
+        /* ------------------ Reporte Egresos Variables Resumido --------------------------------- */
+        public function egresosv_report_resumen($fecha_desde, $fechas_hasta, $tipo_egreso)
+        {   
+            $this->db->select('sai_tipo_egresos.nombre, SUM(sai_egresos.valor) AS total');
+    	    $this->db->from('sai_egresos');
+            $this->db->join('sai_tipo_egresos','sai_tipo_egresos.id = sai_egresos.id_tipo_egreso');
+            $this->db->where('sai_egresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_egresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_egresos.nombre =','Distribución de Comisiones');
             if($tipo_egreso != "null"){
             $this->db->where('id_tipo_egreso', $tipo_egreso);
             }

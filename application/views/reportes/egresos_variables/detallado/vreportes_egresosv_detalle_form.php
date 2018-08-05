@@ -5,7 +5,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('chome');?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Reporte Egresos Resumido</li>
+        <li class="active">Reporte Egresos</li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
               <h3 class="box-title">Seleccione opciones</h3>
             </div>
             <?php echo validation_errors(); ?>
-            <?php echo form_open('creportes/report_egresos_resumen_result'); ?>
+            <?php echo form_open('creportes/report_egresosv_detalle_result'); ?>
             <div class="box-body">
               
               <!-- Fecha Desde -->
