@@ -5,8 +5,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('chome');?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo base_url('creportes/report_ingresos_resumen');?>"><i class="fa fa-dashboard"></i> Reporte Ingresos Resumen</a></li>
-        <li class="active">Reporte de Ingresos Resumido</li>
+        <li><a href="<?php echo base_url('creportes/report_ingresosv_detalle');?>"><i class="fa fa-dashboard"></i> Reporte Ingresos</a></li>
+        <li class="active">Reporte de Ingresos</li>
       </ol>
     </section>
 
@@ -20,30 +20,42 @@
               <h3 class="box-title"></h3>
               <?php date_default_timezone_set('America/Bogota'); ?>
               <h3 class="box-title">Reporte de Propiedades</h3>
-              <?php echo anchor('creportes/impr_rep_ingresos_resumen/'.$fecha_desde.'/'.$fecha_hasta.'/'.$tipo_ingreso.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
+              <?php echo anchor('creportes/impr_rep_ingresosv_detalle/'.$fecha_desde.'/'.$fecha_hasta.'/'.$tipo_ingreso.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
             </div>
             <div class="box-body">
               <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Tipo de Ingreso</th>
+                  <th>ID</th>
+                  <th>Fecha</th>
+                  <th>Tipo</th>
+                  <th>Tercero</th>
                   <th>Valor</th>
+                  <th>Observación</th>
                 </tr>
                </thead>
                <tbody id="myTable">
                 <?php foreach($results as $result): ?>
                 <tr>
+                  <td><?php echo $result['id_ingreso'] ?></td>
+                  <td><?php echo date("d-m-Y", strtotime($result['fecha'])); ?></td>
                   <td><?php echo $result['nombre'] ?></td>
-                  <td><?php echo "$ ".number_format($result['total'],0,',','.'); ?></td>
-                  <?php $total_valor_ingresos += $result['total'] ?>
+                  <td><?php echo $result['nombres'] ?></td>
+                  <td><?php echo "$ ".number_format($result['valor'],0,',','.'); ?></td>
+                  <td><?php echo $result['observacion'] ?></td>
+                  <?php $total_valor_ingresos += $result['valor'] ?>
                 </tr>
                 <?php endforeach; ?>
                </tbody>
                <tfoot>
                 <tr>
-                  <th>Tipo de Ingreso</th>
+                  <th>ID</th>
+                  <th>Fecha</th>
+                  <th>Tipo</th>
+                  <th>Tercero</th>
                   <th>Valor</th>
+                  <th>Observación</th>
                 </tr>
                </tfoot>
              </table>

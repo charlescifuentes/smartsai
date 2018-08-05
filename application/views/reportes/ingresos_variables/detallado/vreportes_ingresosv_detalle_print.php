@@ -6,7 +6,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('chome');?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo base_url('creportes/report_ingresos_resumen');?>"><i class="fa fa-dashboard"></i> Reportes Ingresos Resumen Print</a></li>
+        <li><a href="<?php echo base_url('creportes/report_ingresosv_detalle');?>"><i class="fa fa-dashboard"></i> Reportes Ingresos</a></li>
         <li class="active"><?php echo $title ?></li>
       </ol>
     </section>
@@ -30,15 +30,24 @@
              <table class="table table-bordered">
               <thead>
                <tr>
-                <th>Tipo de Ingreso</th>
-                <th>Total</th>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Tercero</th>
+                <th>Valor</th>
+                <th>Observación</th>
+               </tr>
               </thead>
               <tbody>
                <?php foreach($results as $result): ?>
                 <tr>
+                  <td><p style="font-size:12px;"><?php echo $result['id_ingreso'] ?></p></td>
+                  <td><p style="font-size:12px;"><?php echo date("d-m-Y", strtotime($result['fecha'])); ?></p></td>
                   <td><p style="font-size:12px;"><?php echo $result['nombre'] ?></p></td>
-                  <td><p style="font-size:12px;"><?php echo "$ ".number_format($result['total'],0,',','.'); ?></p></td>
-                  <?php $total_valor_ingresos += $result['total'] ?>
+                  <td><p style="font-size:12px;"><?php echo $result['nombres'] ?></p></td>
+                  <td><p style="font-size:12px;"><?php echo "$ ".number_format($result['valor'],0,',','.'); ?></p></td>
+                  <td><p style="font-size:12px;"><?php echo $result['observacion'] ?></p></td>
+                  <td><?php $total_valor_ingresos += $result['valor'] ?></p></td>
                 </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -61,6 +70,7 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3><?php echo "$ ".number_format($total_valor_ingresos,0,',','.'); ?></h3>
+
               <p>TOTAL INGRESOS</p>
             </div>
             <div class="icon">
@@ -74,6 +84,7 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3><sup style="font-size: 20px">Del </sup><?php echo date("d-m-Y", strtotime($fecha_desde)); ?><sup style="font-size: 20px"> Al </sup><?php echo date("d-m-Y", strtotime($fecha_hasta)); ?></h3>
+
               <p>RANGO</p>
             </div>
             <div class="icon">

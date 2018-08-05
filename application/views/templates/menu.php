@@ -53,14 +53,25 @@
             <li><a href="<?php echo base_url('creportes/report_clientes');?>"><i class="fa fa-circle-o"></i> Clientes</a></li>
             <li><a href="<?php echo base_url('creportes/report_propiedades');?>"><i class="fa fa-circle-o"></i> Propiedades</a></li>
             <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Ingresos
+              <a href="#"><i class="fa fa-circle-o"></i> Ingresos Fijos
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo base_url('creportes/report_ingresos_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
-                <li><a href="<?php echo base_url('creportes/report_ingresos_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
+                <li><a href="<?php echo base_url('creportes/report_ingresosf_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
+                <li><a href="<?php echo base_url('creportes/report_ingresosf_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Ingresos Variables
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url('creportes/report_ingresosv_detalle');?>"><i class="fa fa-circle-o"></i> Reporte Detallado</a></li>
+                <li><a href="<?php echo base_url('creportes/report_ingresosv_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
               </ul>
             </li>
             <li>

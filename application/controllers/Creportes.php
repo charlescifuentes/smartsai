@@ -125,21 +125,21 @@ class Creportes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    /* ------------------ Reporte Ingresos Detallado --------------------------------- */
+    /* ------------------ Reporte Ingresos Fijos Detallado --------------------------------- */
 
-    public function report_ingresos_detalle()
+    public function report_ingresosf_detalle()
     {
-        $data['title'] = "Formulario Reporte de Ingresos Detallado";
+        $data['title'] = "Formulario Reporte de Ingresos Fijos Detallado";
 
         $data['tingresos'] = $this->mopciones->get_tipos_ingreso();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/detallado/vreportes_ingresos_detalle_form', $data);
+        $this->load->view('reportes/ingresos_fijos/detallado/vreportes_ingresosf_detalle_form', $data);
         $this->load->view('templates/footer');
     }
 
-    public function report_ingresos_detalle_result()
+    public function report_ingresosf_detalle_result()
     {
         $data['fecha_desde'] = $this->input->post('fecha_desde');
         $data['fecha_hasta'] = $this->input->post('fecha_hasta');
@@ -149,15 +149,15 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_ingresos'] = 0;
 
-        $data['title'] = "Reporte de Ingresos Detallado Resultado";
+        $data['title'] = "Reporte de Ingresos Fijos Detallado Resultado";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/detallado/vreportes_ingresos_detalle_result',$data);
+        $this->load->view('reportes/ingresos_fijos/detallado/vreportes_ingresosf_detalle_result',$data);
         $this->load->view('templates/footer');
     }
 
-    public function impr_rep_ingresos_detalle($fecha_desde, $fecha_hasta, $tipo_ingreso)
+    public function impr_rep_ingresosf_detalle($fecha_desde, $fecha_hasta, $tipo_ingreso)
     {
         $data['fecha_desde'] = $fecha_desde;
         $data['fecha_hasta'] = $fecha_hasta;
@@ -167,29 +167,29 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_ingresos'] = 0;
 
-        $data['title'] = "Reporte de Ingresos Detallado Impresión";
+        $data['title'] = "Reporte de Ingresos Fijos Detallado Impresión";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/detallado/vreportes_ingresos_detalle_print',$data);
+        $this->load->view('reportes/ingresos_fijos/detallado/vreportes_ingresosf_detalle_print',$data);
         $this->load->view('templates/footer');
     }
 
-    /* ------------------ Reporte Ingresos Resumido --------------------------------- */
+    /* ------------------ Reporte Ingresos Fijos Resumido --------------------------------- */
 
-    public function report_ingresos_resumen()
+    public function report_ingresosf_resumen()
     {
-        $data['title'] = "Formulario Reporte de Ingresos Resumidos";
+        $data['title'] = "Formulario Reporte de Ingresos Fijos Resumidos";
 
         $data['tingresos'] = $this->mopciones->get_tipos_ingreso();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/resumido/vreportes_ingresos_resumen_form', $data);
+        $this->load->view('reportes/ingresos_fijos/resumido/vreportes_ingresosf_resumen_form', $data);
         $this->load->view('templates/footer');
     }
 
-    public function report_ingresos_resumen_result()
+    public function report_ingresosf_resumen_result()
     {
         $data['fecha_desde'] = $this->input->post('fecha_desde');
         $data['fecha_hasta'] = $this->input->post('fecha_hasta');
@@ -199,15 +199,15 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_ingresos'] = 0;
 
-        $data['title'] = "Reporte de Ingresos Resumidos";
+        $data['title'] = "Reporte de Ingresos Fijos Resumidos";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/resumido/vreportes_ingresos_resumen_result',$data);
+        $this->load->view('reportes/ingresos_fijos/resumido/vreportes_ingresosf_resumen_result',$data);
         $this->load->view('templates/footer');
     }
 
-    public function impr_rep_ingresos_resumen($fecha_desde, $fecha_hasta, $tipo_ingreso)
+    public function impr_rep_ingresosf_resumen($fecha_desde, $fecha_hasta, $tipo_ingreso)
     {
         $data['fecha_desde'] = $fecha_desde;
         $data['fecha_hasta'] = $fecha_hasta;
@@ -217,11 +217,111 @@ class Creportes extends CI_Controller {
 
         $data['total_valor_ingresos'] = 0;
 
-        $data['title'] = "Reporte de Ingresos Resumidos - Impresión";
+        $data['title'] = "Reporte de Ingresos Fijos Resumidos - Impresión";
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
-        $this->load->view('reportes/ingresos/resumido/vreportes_ingresos_resumen_print',$data);
+        $this->load->view('reportes/ingresos_fijos/resumido/vreportes_ingresosf_resumen_print',$data);
+        $this->load->view('templates/footer');
+    }
+
+    /* ------------------ Reporte Ingresos Variables Detallado --------------------------------- */
+
+    public function report_ingresosv_detalle()
+    {
+        $data['title'] = "Formulario Reporte de Ingresos Variables Detallado";
+
+        $data['tingresos'] = $this->mopciones->get_tipos_ingreso();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/detallado/vreportes_ingresosv_detalle_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_ingresosv_detalle_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['tipo_ingreso'] = $this->input->post('tipo_ingreso');
+
+        $data['results'] = $this->mreportes->ingresosv_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+
+        $data['total_valor_ingresos'] = 0;
+
+        $data['title'] = "Reporte de Ingresos Variables Detallado Resultado";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/detallado/vreportes_ingresosv_detalle_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_ingresosv_detalle($fecha_desde, $fecha_hasta, $tipo_ingreso)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['tipo_ingreso'] = $tipo_ingreso;
+
+        $data['results'] = $this->mreportes->ingresosv_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+
+        $data['total_valor_ingresos'] = 0;
+
+        $data['title'] = "Reporte de Ingresos Variables Detallado Impresión";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/detallado/vreportes_ingresosv_detalle_print',$data);
+        $this->load->view('templates/footer');
+    }
+
+    /* ------------------ Reporte Ingresos Variables Resumido --------------------------------- */
+
+    public function report_ingresosv_resumen()
+    {
+        $data['title'] = "Formulario Reporte de Ingresos Variables Resumido";
+
+        $data['tingresos'] = $this->mopciones->get_tipos_ingreso();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/resumido/vreportes_ingresosv_resumen_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_ingresosv_resumen_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['tipo_ingreso'] = $this->input->post('tipo_ingreso');
+
+        $data['results'] = $this->mreportes->ingresosv_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+
+        $data['total_valor_ingresos'] = 0;
+
+        $data['title'] = "Reporte de Ingresos Variables Resumido";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/resumido/vreportes_ingresosv_resumen_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_ingresosv_resumen($fecha_desde, $fecha_hasta, $tipo_ingreso)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['tipo_ingreso'] = $tipo_ingreso;
+
+        $data['results'] = $this->mreportes->ingresosv_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+
+        $data['total_valor_ingresos'] = 0;
+
+        $data['title'] = "Reporte de Ingresos Variables Resumido - Impresión";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/ingresos_variables/resumido/vreportes_ingresosv_resumen_print',$data);
         $this->load->view('templates/footer');
     }
 

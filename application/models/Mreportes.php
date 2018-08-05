@@ -68,7 +68,7 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Detallado--------------------------------- */
+        /* ------------------ Reporte Ingresos Fijos Detallado--------------------------------- */
         public function ingresos_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_ingresos.id AS id_ingreso, sai_ingresos.fecha, sai_tipo_ingresos.id AS id_tipo_ingreso, sai_tipo_ingresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_ingresos.valor, sai_ingresos.observacion');
@@ -77,13 +77,14 @@ class Mreportes extends CI_Model {
             $this->db->join('sai_clientes','sai_clientes.id_cliente = sai_ingresos.id_tercero');
             $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
             $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre <>','Comisión por Venta de Propiedad');
             if($tipo_ingreso != "null"){
             $this->db->where('id_tipo_ingreso', $tipo_ingreso);
             }
             return $query = $this->db->get()->result_array();
         }
 
-        /* ------------------ Reporte Ingresos Resumido--------------------------------- */
+        /* ------------------ Reporte Ingresos Fijos Resumido--------------------------------- */
         public function ingresos_report_resumen($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   
             $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
@@ -91,6 +92,39 @@ class Mreportes extends CI_Model {
             $this->db->join('sai_tipo_ingresos','sai_tipo_ingresos.id = sai_ingresos.id_tipo_ingreso');
             $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
             $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre <>','Comisión por Venta de Propiedad');
+            if($tipo_ingreso != "null"){
+            $this->db->where('id_tipo_ingreso', $tipo_ingreso);
+            }
+            $this->db->group_by('sai_tipo_ingresos.nombre');
+            return $query = $this->db->get()->result_array();
+        }
+
+        /* ------------------ Reporte Ingresos Variables Detallado--------------------------------- */
+        public function ingresosv_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
+        {   
+            $this->db->select('sai_ingresos.id AS id_ingreso, sai_ingresos.fecha, sai_tipo_ingresos.id AS id_tipo_ingreso, sai_tipo_ingresos.nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_ingresos.valor, sai_ingresos.observacion');
+    	    $this->db->from('sai_ingresos');
+            $this->db->join('sai_tipo_ingresos','sai_tipo_ingresos.id = sai_ingresos.id_tipo_ingreso');
+            $this->db->join('sai_clientes','sai_clientes.id_cliente = sai_ingresos.id_tercero');
+            $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre =','Comisión por Venta de Propiedad');
+            if($tipo_ingreso != "null"){
+            $this->db->where('id_tipo_ingreso', $tipo_ingreso);
+            }
+            return $query = $this->db->get()->result_array();
+        }
+
+        /* ------------------ Reporte Ingresos Variables Resumido--------------------------------- */
+        public function ingresosv_report_resumen($fecha_desde, $fechas_hasta, $tipo_ingreso)
+        {   
+            $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
+    	    $this->db->from('sai_ingresos');
+            $this->db->join('sai_tipo_ingresos','sai_tipo_ingresos.id = sai_ingresos.id_tipo_ingreso');
+            $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre =','Comisión por Venta de Propiedad');
             if($tipo_ingreso != "null"){
             $this->db->where('id_tipo_ingreso', $tipo_ingreso);
             }

@@ -5,7 +5,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('chome');?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo base_url('creportes/report_ingresos');?>"><i class="fa fa-dashboard"></i> Reporte Ingresos</a></li>
+        <li><a href="<?php echo base_url('creportes/report_ingresosf_detalle');?>"><i class="fa fa-dashboard"></i> Reporte Ingresos</a></li>
         <li class="active">Reporte de Ingresos</li>
       </ol>
     </section>
@@ -20,7 +20,7 @@
               <h3 class="box-title"></h3>
               <?php date_default_timezone_set('America/Bogota'); ?>
               <h3 class="box-title">Reporte de Propiedades</h3>
-              <?php echo anchor('creportes/impr_rep_ingresos_detalle/'.$fecha_desde.'/'.$fecha_hasta.'/'.$tipo_ingreso.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
+              <?php echo anchor('creportes/impr_rep_ingresosf_detalle/'.$fecha_desde.'/'.$fecha_hasta.'/'.$tipo_ingreso.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
             </div>
             <div class="box-body">
               <div class="table-responsive">
