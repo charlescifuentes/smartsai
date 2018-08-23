@@ -524,4 +524,62 @@ class Creportes extends CI_Controller {
         $this->load->view('reportes/egresos_variables/resumido/vreportes_egresosv_resumen_print',$data);
         $this->load->view('templates/footer');
     }
+
+    /* ------------------ Reporte de Estado de Resultados --------------------------------- */
+
+    public function report_pyg_resumen()
+    {
+        $data['title'] = "Formulario Estado de Resultados";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/estado_resultados/vreportes_pyg_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_pyg_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['tipo_ingreso'] = 'null';
+        $data['tipo_egreso'] = 'null';
+
+        $data['ingresos'] = $this->mreportes->ingresos_pyg_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+        $data['prestamos'] = $this->mreportes->prestamos_pyg_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+        $data['egresos'] = $this->mreportes->egresos_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_ingresos'] = 0;
+        $data['total_valor_prestamos'] = 0;
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Estado de Resultados";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/estado_resultados/vreportes_pyg_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_pyg($fecha_desde, $fecha_hasta)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['tipo_ingreso'] = 'null';
+        $data['tipo_egreso'] = 'null';
+
+        $data['ingresos'] = $this->mreportes->ingresos_pyg_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+        $data['prestamos'] = $this->mreportes->prestamos_pyg_report($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_ingreso']);
+        $data['egresos'] = $this->mreportes->egresos_report_resumen($data['fecha_desde'], $data['fecha_hasta'], $data['tipo_egreso']);
+
+        $data['total_valor_ingresos'] = 0;
+        $data['total_valor_prestamos'] = 0;
+        $data['total_valor_egresos'] = 0;
+
+        $data['title'] = "Reporte de Estado de Resultados";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/estado_resultados/vreportes_pyg_print',$data);
+        $this->load->view('templates/footer');
+    }
 }

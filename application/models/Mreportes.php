@@ -195,4 +195,37 @@ class Mreportes extends CI_Model {
             $this->db->group_by('sai_tipo_egresos.nombre');
             return $query = $this->db->get()->result_array();
         }
+
+        /* ------------------ Reporte de Estado de Resultados --------------------------------- */
+        public function ingresos_pyg_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
+        {   
+            $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
+    	    $this->db->from('sai_ingresos');
+            $this->db->join('sai_tipo_ingresos','sai_tipo_ingresos.id = sai_ingresos.id_tipo_ingreso');
+            $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre <>','Comisión por Venta de Propiedad');
+            $this->db->where('sai_tipo_ingresos.nombre <>','Rojos Andrea (Préstamo personal a Inmobiliaria)');
+            if($tipo_ingreso != "null"){
+            $this->db->where('id_tipo_ingreso', $tipo_ingreso);
+            }
+            $this->db->group_by('sai_tipo_ingresos.nombre');
+            return $query = $this->db->get()->result_array();
+        }
+
+        /* ------------------ Reporte de Estado de Resultados (Prestamo personal) --------------------------------- */
+        public function prestamos_pyg_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
+        {   
+            $this->db->select('sai_tipo_ingresos.nombre, SUM(sai_ingresos.valor) AS total');
+    	    $this->db->from('sai_ingresos');
+            $this->db->join('sai_tipo_ingresos','sai_tipo_ingresos.id = sai_ingresos.id_tipo_ingreso');
+            $this->db->where('sai_ingresos.fecha >=', $fecha_desde);
+            $this->db->where('sai_ingresos.fecha <=', $fechas_hasta);
+            $this->db->where('sai_tipo_ingresos.nombre =','Rojos Andrea (Préstamo personal a Inmobiliaria)');
+            if($tipo_ingreso != "null"){
+            $this->db->where('id_tipo_ingreso', $tipo_ingreso);
+            }
+            $this->db->group_by('sai_tipo_ingresos.nombre');
+            return $query = $this->db->get()->result_array();
+        }
 }

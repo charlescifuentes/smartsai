@@ -96,6 +96,7 @@
                 <li><a href="<?php echo base_url('creportes/report_egresosv_resumen');?>"><i class="fa fa-circle-o"></i> Reporte Resumido</a></li>
               </ul>
             </li>
+            <li><a href="<?php echo base_url('creportes/report_pyg_resumen');?>"><i class="fa fa-circle-o"></i> Estado de Resultados</a></li>
           </ul>
         </li>
         <li><a href="<?php echo base_url('cusers/user_logout');?>"><i class="fa fa-power-off"></i> <span>Salir</span></a></li>
