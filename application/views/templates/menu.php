@@ -40,7 +40,6 @@
         <li><a href="<?php echo base_url('ctareas');?>"><i class="fa fa-users"></i> <span>Cronograma</span></a></li>
         <li><a href="<?php echo base_url('cingresos');?>"><i class="fa fa-automobile"></i> <span>Ingresos</span></a></li>
         <li><a href="<?php echo base_url('cegresos');?>"><i class="fa fa-map"></i> <span>Egresos</span></a></li>
-        <li><a href="<?php echo base_url('ctareas');?>"><i class="fa fa-dashboard"></i> <span>Cuadre de Caja</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -99,6 +98,7 @@
             <li><a href="<?php echo base_url('creportes/report_pyg_resumen');?>"><i class="fa fa-circle-o"></i> Estado de Resultados</a></li>
           </ul>
         </li>
+        <li><a href="<?php echo base_url('cusers/user_show');?>"><i class="fa fa-dashboard"></i> <span>Usuarios</span></a></li>
         <li><a href="<?php echo base_url('cusers/user_logout');?>"><i class="fa fa-power-off"></i> <span>Salir</span></a></li>
       </ul>
     </section>

@@ -79,4 +79,35 @@ class Cusers extends CI_Controller {
         $this->session->sess_destroy();
         redirect('cusers', 'refresh');
     }
+
+    public function user_show()
+    {
+        $data['title'] = "Usuarios";
+
+        $data['usuarios'] = $this->musers->get_users();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('users/vusuarios',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function user_view($str)
+    {
+        $data['title'] = "Ver Usuarios";
+
+        $data['usuario'] = $this->musers->get_user($str);
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('users/vusuarios_view',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function user_update()
+    {
+        $this->musers->update_user();
+        redirect('cusers/user_show');
+    }
+
+
 }
