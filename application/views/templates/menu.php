@@ -10,7 +10,7 @@
         </div>
         <div class="pull-left info">
             <p><?php echo $this->session->userdata['user_data']; ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i>En linea</a>
+          <a href="#"><i class="fa fa-circle text-success"></i><?php echo $this->session->userdata['user_rol']; ?></a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->

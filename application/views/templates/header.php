@@ -65,7 +65,7 @@
               <span class="label label-success">4</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+              <li class="header">Tienes 4 mensajes</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -142,7 +142,7 @@
               <span class="label label-warning">10</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">Tienes 10 notificaciones</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -174,7 +174,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <li class="footer"><a href="#">Ver todas</a></li>
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -184,7 +184,7 @@
               <span class="label label-danger">9</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
+              <li class="header">Tienes 9 tareas</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -247,7 +247,7 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="#">View all tasks</a>
+                <a href="#">Ver todas las tareas</a>
               </li>
             </ul>
           </li>
@@ -264,7 +264,7 @@
 
                 <p>
                   <?php ?>
-                  <small>Usuario activo</small>
+                  <small><?php echo $this->session->userdata['user_rol']; ?></small>
                   <?php echo $this->session->userdata['user_data']; ?>
                 </p>
               </li>
