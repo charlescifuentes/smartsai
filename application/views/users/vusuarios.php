@@ -17,7 +17,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Lista de Usuarios</h3>
-              <?php echo anchor('cusers/create', 'Agregar Usuario', 'class="btn btn-primary btn-lg pull-right"') ?>
+              <?php echo anchor('cusers/user_create', 'Agregar Usuario', 'class="btn btn-primary btn-lg pull-right"') ?>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

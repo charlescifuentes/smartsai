@@ -54,26 +54,29 @@ class Musers extends CI_model{
     }
 
     public function update_user()
-        {
-            $user_id = $this->input->post('user_id');
-            $user_password = md5($this->input->post('user_password'));
+    {
+        $user_id = $this->input->post('user_id');
 
-            if($user_password != "null" ){
-                print_r ($user_password);
-                $data = array(
-                    'user_password' => $user_password
-                );
-            }
-
-            $data = array(
+        $data = array(
             'user_name' => $this->input->post('user_name'),
             'user_email' => $this->input->post('user_email'),
             'user_data' => $this->input->post('user_data'),
             'user_mobile' => $this->input->post('user_mobile'),
             'user_rol' => $this->input->post('user_rol')
-            );
+        );
 
-            $this->db->where('user_id', $user_id);
-            $this->db->update('sai_users', $data);
+        $this->db->where('user_id', $user_id);
+        $this->db->update('sai_users', $data);
+    }
+
+    public function delete_usuario($id)
+    {
+        if ( ! $this->db->delete('sai_users', array('user_id' => $id)))
+        {
+            return $error = $this->db->error(); // Has keys 'code' and 'message'
         }
+        else{
+            return 1;
+        }
+    }
 }

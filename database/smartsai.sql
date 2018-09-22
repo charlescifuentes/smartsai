@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2018 a las 01:38:31
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.2.7
+-- Tiempo de generación: 22-09-2018 a las 05:48:32
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -1996,7 +1996,8 @@ CREATE TABLE `sai_users` (
 --
 
 INSERT INTO `sai_users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_data`, `user_mobile`, `user_rol`) VALUES
-(7, 'charles', 'charlescifuentes@gmail.com', 'fe01ce2a7fbac8fafaed7c982a04e229', 'Charles Cifuentes', '3174015113', 'Administrador');
+(7, 'charles', 'charlescifuentes@gmail.com', 'a5410ee37744c574ba5790034ea08f79', 'Charles Cifuentes', '3174015113', 'Administrador'),
+(8, 'leidy', 'leidyjhoannaguevara@gmail.com', 'e8139dbcf44c9f6051ed44267c5fa7d6', 'Leidy Guevara', '3103381276', 'Comercial');
 
 --
 -- Índices para tablas volcadas
@@ -2160,7 +2161,7 @@ ALTER TABLE `sai_tipo_propiedades`
 -- AUTO_INCREMENT de la tabla `sai_users`
 --
 ALTER TABLE `sai_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

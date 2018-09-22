@@ -44,12 +44,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="user_password" class="col-sm-2 control-label">Contraseña:</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" name="user_password">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="user_data" class="col-sm-2 control-label">Nombres:</label>
                                 <div class="col-sm-10">
                                 <input type="text" class="form-control" name="user_data" value="<?php echo $usuario['user_data'] ?>">
