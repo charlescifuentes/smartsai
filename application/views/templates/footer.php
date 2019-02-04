@@ -3,7 +3,7 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.4.0
+      <b>Version</b> 1.5.0
     </div>
     <strong>Copyright &copy; 2018 <a href="http://www.colombia-web.com">Colombia Web</a></strong> Todos los derechos reservados
   </footer>

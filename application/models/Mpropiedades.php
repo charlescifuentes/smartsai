@@ -8,7 +8,7 @@ class Mpropiedades extends CI_Model {
 
         public function get_propiedades()
         {
-            $this->db->select('sai_propiedades.id_propiedad, sai_propiedades.fecha_creacion, sai_tipo_propiedades.tipo_nombre, sai_ciudades.ciudad_nombre, sai_barrios.barrio_nombre, sai_propiedades.precio, sai_objetivos.objetivo_nombre, sai_clientes.nombres, sai_propiedades.prop_activo ');
+            $this->db->select('sai_propiedades.id_propiedad, sai_propiedades.fecha_creacion, sai_tipo_propiedades.tipo_nombre, sai_ciudades.ciudad_nombre, sai_barrios.barrio_nombre, sai_propiedades.precio, sai_objetivos.objetivo_nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_propiedades.prop_activo ');
     		$this->db->from('sai_propiedades');
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_propiedades.id_tipo');
             $this->db->join('sai_ciudades','sai_ciudades.id_ciudad = sai_propiedades.id_ciudad');

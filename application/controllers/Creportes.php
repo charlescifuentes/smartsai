@@ -67,6 +67,14 @@ class Creportes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function modal_cliente() 
+    {
+        $s = $this->input->post('id_cliente');
+        $res = $this->mreportes->cliente_modal($s);
+
+        echo json_encode($res);
+    }
+
     /* ------------------ Reporte Propiedades --------------------------------- */
 
     public function report_propiedades()

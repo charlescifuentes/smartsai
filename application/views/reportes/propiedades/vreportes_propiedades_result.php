@@ -48,7 +48,7 @@
                   <td><?php echo $result['barrio_nombre'] ?></td>
                   <td><?php echo "$ ".number_format($result['precio'],0,',','.'); ?></td>
                   <td><?php echo $result['objetivo_nombre'] ?></td>
-                  <td><?php echo $result['nombres'] ?></td>
+                  <td><a href="#" onclick="mostrar_cliente('<?php echo $result['id_cliente'] ?>')"><?php echo $result['nombres'] ?></a></td>
                   <td><?php echo $result['caracteristicas'] ?></td>
                 </tr>
                 <?php endforeach; ?>
@@ -68,6 +68,40 @@
                </tfoot>
              </table>
              </div>
+              <!-- Modal -->
+              <div class="modal modal-info fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Datos del Cliente</h4>
+                    </div>
+                    <div class="modal-body">
+                      <ul class="list-group" style="color: black;">
+                        <li class="list-group-item" id="id_cliente"></li>
+                        <li class="list-group-item" id="identificacion"></li>
+                        <li class="list-group-item" id="fecha_creacion"></li>
+                        <li class="list-group-item" id="nombres"></li>
+                        <li class="list-group-item" id="telefono"></li>
+                        <li class="list-group-item" id="tipo_nombre"></li>
+                        <li class="list-group-item" id="presupuesto"></li>
+                        <li class="list-group-item" id="barrios_interes"></li>
+                        <li class="list-group-item" id="caracteristicas_interes"></li>
+                        <li class="list-group-item" id="anotaciones"></li>
+                        <li class="list-group-item" id="tipo_cliente_nombre"></li>
+                        <li class="list-group-item" id="fecha_contactar"></li>
+                        <li class="list-group-item" id="cli_activo"></li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -78,3 +112,29 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+
+    <script>
+    function mostrar_cliente(str) {
+      $.post("<?php echo base_url();?>creportes/modal_cliente",
+      {
+        id_cliente: str
+      },
+      function(data){
+        var cv = JSON.parse(data);
+        $('#id_cliente').text("ID Cliente: "+cv.id_cliente);
+        $('#identificacion').text("Identificación: "+cv.identificacion);
+        $('#fecha_creacion').text("Fecha Creación: "+cv.fecha_creacion);
+        $('#nombres').text("Nombres: "+cv.nombres);
+        $('#telefono').text("Teléfono: "+cv.telefono);
+        $('#tipo_nombre').text("Propiedad Interés: "+cv.tipo_nombre);
+        $('#presupuesto').text("Presupuesto: "+cv.presupuesto);
+        $('#barrios_interes').text("Barrio Interés: "+ cv.barrios_interes);
+        $('#caracteristicas_interes').text("Características Interés: "+cv.caracteristicas_interes);
+        $('#anotaciones').text("Anotaciones: "+cv.anotaciones);
+        $('#tipo_cliente_nombre').text("Tipo de Cliente: "+cv.tipo_cliente_nombre);
+        $('#fecha_contactar').text("Fecha a contactar: "+cv.fecha_contactar);
+        $('#cli_activo').text("Activo: "+cv.cli_activo);
+      });
+          $('#myModal').modal('show');
+    }
+    </script>

@@ -48,7 +48,7 @@
                   <td><?php echo $propiedad['barrio_nombre'] ?></td>
                   <td><?php echo "$ ".number_format($propiedad['precio'],0,',','.'); ?></td>
                   <td><?php echo $propiedad['objetivo_nombre'] ?></td>
-                  <td><?php echo $propiedad['nombres'] ?></td>
+                  <td><a href="<?php echo base_url('cclientes/view/'.$propiedad['id_cliente']);?>"><?php echo $propiedad['nombres'] ?></a></td>
                   <td><?php echo $propiedad['prop_activo'] ?></td>
                   <td><?php echo anchor('cpropiedades/view/'.$propiedad['id_propiedad'].'', 'Ver', 'title="Ver Propiedad"'); ?></td>
                   <td><button type="button" class="btn btn-danger btn-xs" onclick='borrar_propiedad("<?php echo $propiedad['id_propiedad'] ?>");' id="btn_delete" title="Borrar este item">Borrar</button></td>
@@ -97,6 +97,6 @@
                 var vr = JSON.parse(data);
                     alert("No se puede eliminar este registro porque ya tiene movimientos en Propiedades - Código de error: " + vr.code);
                 }
-            });
+        });
     }
 </script>

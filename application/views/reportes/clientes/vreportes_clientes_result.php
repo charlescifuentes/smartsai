@@ -47,7 +47,9 @@
                   <td><?php echo $result['tipo_nombre'] ?></td>
                   <td><?php echo "$ ".number_format($result['presupuesto'],0,',','.'); ?></td>
                   <td><?php echo $result['tipo_cliente_nombre'] ?></td>
-                  <td><?php echo $result['anotaciones'] ?></td>
+                    <?php $anotaciones = $result['anotaciones'] ?>
+                    <?php $anotaciones = preg_replace("/[\r\n|\n|\r]+/", " ", $anotaciones); ?>
+                  <td><?php echo '<button type="button" class="btn btn-info btn-sm" onclick="modal_anotacion(\''.$anotaciones.'\')">Mostrar</button>'?></td>
                 </tr>
                 <?php endforeach; ?>
                </tbody>
@@ -73,5 +75,32 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+        <!-- Modal -->
+        <div class="modal modal-info fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Anotaciones Cliente</h4>
+              </div>
+              <div class="modal-body">
+                <p id="anotaciones"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
     </section>
     <!-- /.content -->
+
+    <script>
+      function modal_anotacion($str) {
+        $('#anotaciones').html($str);
+        $('#myModal').modal('show');
+      }
+    </script>

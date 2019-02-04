@@ -34,10 +34,20 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
+        public function cliente_modal($str)
+        {
+            $this->db->select('*');
+    		$this->db->from('sai_clientes');
+    		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_clientes.id_tipo');
+            $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
+            $this->db->where('id_cliente',$str);
+            return $query = $this->db->get()->row_array();
+        }
+
         /* ------------------ Reporte Propiedades --------------------------------- */
         public function propiedades_report($id_tipo_propiedad, $id_ciudad, $id_barrio, $precio_desde, $precio_hasta, $id_objetivo, $prop_activo)
         {
-            $this->db->select('sai_propiedades.id_propiedad, sai_propiedades.fecha_creacion, sai_tipo_propiedades.tipo_nombre, sai_ciudades.ciudad_nombre, sai_barrios.barrio_nombre, sai_propiedades.precio, sai_objetivos.objetivo_nombre, sai_clientes.nombres, sai_propiedades.caracteristicas, sai_propiedades.prop_activo');
+            $this->db->select('sai_propiedades.id_propiedad, sai_propiedades.fecha_creacion, sai_tipo_propiedades.tipo_nombre, sai_ciudades.ciudad_nombre, sai_barrios.barrio_nombre, sai_propiedades.precio, sai_objetivos.objetivo_nombre, sai_clientes.id_cliente, sai_clientes.nombres, sai_propiedades.caracteristicas, sai_propiedades.prop_activo');
     		$this->db->from('sai_propiedades');
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_propiedades.id_tipo');
             $this->db->join('sai_ciudades','sai_ciudades.id_ciudad = sai_propiedades.id_ciudad');
