@@ -7,12 +7,13 @@ class Mreportes extends CI_Model {
         }
 
         /* ------------------ Reporte Clientes --------------------------------- */
-        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $cliente_nombre, $cli_activo)
+        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $cliente_nombre, $estado_cliente)
         {
-            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_clientes.anotaciones, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre');
+            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_clientes.anotaciones, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre');
     		$this->db->from('sai_clientes');
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_clientes.id_tipo');
             $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
+            $this->db->join('sai_estado_clientes','sai_estado_clientes.id_estado_cliente = sai_clientes.id_estado_cliente');
             if($id_tipo_cliente != "null"){
             $this->db->where('sai_clientes.id_tipo_cliente', $id_tipo_cliente);
             }
@@ -28,8 +29,8 @@ class Mreportes extends CI_Model {
             if($cliente_nombre != "null"){
             $this->db->where('sai_clientes.id_cliente', $cliente_nombre);
             }
-            if($cli_activo != "null"){
-            $this->db->where('sai_clientes.cli_activo', $cli_activo);
+            if($estado_cliente != "null"){
+            $this->db->where('sai_clientes.id_estado_cliente', $estado_cliente);
             }
             return $query = $this->db->get()->result_array();
         }

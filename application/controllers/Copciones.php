@@ -247,6 +247,66 @@ class Copciones extends CI_Controller {
         redirect('copciones/tipos_cliente');
     }
 
+    /* --------------------- Estados de Clientes ------------------------------------------------ */
+
+    public function estados_cliente()
+    {
+        $data['title'] = "Estados de Clientes";
+
+        $data['estados'] = $this->mopciones->get_estados_cliente();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('opciones/estados_cliente/vopciones_estados',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function view_estado_cliente($str)
+    {
+        $data['title'] = "Ver Estado Cliente";
+
+        $data['estado'] = $this->mopciones->get_estado_cliente($str);
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('opciones/estados_cliente/vopciones_estados_view',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function update_estado_cliente()
+    {
+        $this->mopciones->update_estado_cliente();
+        redirect('copciones/estados_cliente');
+    }
+
+    public function delete_estado_cliente()
+    {
+        $s = $this->input->post('estado');
+        $res = $this->mopciones->delete_estado_cliente($s);
+
+        if($res == 1){
+            echo json_encode($res);
+        }else{
+            echo json_encode($res);
+        }
+    }
+
+    public function create_estado_cliente()
+    {
+        $data['title'] = "Crear Estado";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('opciones/estados_cliente/vopciones_estados_create',$data);
+        $this->load->view('templates/footer');
+
+    }
+
+    public function insert_estado_cliente()
+    {
+        $this->mopciones->insert_estado_cliente();
+        redirect('copciones/estados_cliente');
+    }
+
     /* --------------------- Ciudades ------------------------------------------------- */
 
     public function ciudades()

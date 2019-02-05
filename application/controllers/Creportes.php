@@ -21,6 +21,7 @@ class Creportes extends CI_Controller {
         $data['tclientes'] = $this->mopciones->get_tipos_cliente();
         $data['tpropiedades'] = $this->mopciones->get_tipos_propiedad();
         $data['nom_clientes'] = $this->mclientes->get_clientes();
+        $data['testados'] = $this->mopciones->get_estados_cliente();
 
 
         $this->load->view('templates/header',$data);
@@ -36,9 +37,9 @@ class Creportes extends CI_Controller {
         $data['presupuesto_desde'] = $this->input->post('presupuesto_desde');
         $data['presupuesto_hasta'] = $this->input->post('presupuesto_hasta');
         $data['cliente_nombre'] = $this->input->post('cliente_nombre');
-        $data['cli_activo'] = $this->input->post('cli_activo');
+        $data['id_estado_cliente'] = $this->input->post('estado_cliente');
 
-        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['cliente_nombre'], $data['cli_activo']);
+        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['cliente_nombre'], $data['id_estado_cliente']);
 
         $data['title'] = "Reporte de Clientes Resultado";
 
@@ -48,16 +49,16 @@ class Creportes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function impr_rep_clientes($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $cliente_nombre, $cli_activo)
+    public function impr_rep_clientes($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $cliente_nombre, $id_estado_cliente)
     {
         $data['id_tipo_cliente'] = $id_tipo_cliente;
         $data['id_interes'] = $id_interes;
         $data['presupuesto_desde'] = $presupuesto_desde;
         $data['presupuesto_hasta'] = $presupuesto_hasta;
         $data['cliente_nombre'] = $cliente_nombre;
-        $data['cli_activo'] = $cli_activo;
+        $data['id_estado_cliente'] = $id_estado_cliente;
 
-        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['cliente_nombre'], $data['cli_activo']);
+        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['cliente_nombre'], $data['id_estado_cliente']);
 
         $data['title'] = "Reporte de Clientes Impresi�n";
 

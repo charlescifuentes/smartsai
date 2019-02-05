@@ -49,6 +49,9 @@
             <?php if($user_rol == "Administrador" || "Comercial"){ ?>
             <li><a href="<?php echo base_url('copciones/tipos_cliente');?>"><i class="fa fa-circle-o"></i> Tipos de Clientes</a></li>
             <?php } ?>
+            <?php if($user_rol == "Administrador" || "Comercial"){ ?>
+            <li><a href="<?php echo base_url('copciones/estados_cliente');?>"><i class="fa fa-circle-o"></i> Estados de Clientes</a></li>
+            <?php } ?>
             <?php if($user_rol == "Administrador"){ ?>
             <li><a href="<?php echo base_url('copciones/tipos_ingreso');?>"><i class="fa fa-circle-o"></i> Tipos de Ingresos</a></li>
             <?php } ?>

@@ -110,12 +110,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="cli_activo" class="col-sm-2 control-label">Activo</label>
+                                <label for="cli_activo" class="col-sm-2 control-label">Estado de Negociación</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" name="cli_activo" style="width: 100%;">
-                                        <option value="<?php echo $cliente['cli_activo'] ?>" selected="selected"><?php echo $cliente['cli_activo'] ?></option>
-                                        <option value="si">Si</option>
-                                        <option value="no">No</option>
+                                    <select class="form-control select2" name="id_estado_cliente" style="width: 100%;">
+                                        <option value="<?php echo $cliente['id_estado_cliente'] ?>" selected="selected"><?php echo $cliente['estado_cliente_nombre'] ?></option>
+                                        <?php foreach($testados as $testado): ?>
+                                        <option value=<?php echo $testado['id_estado_cliente'] ?>><?php echo $testado['estado_cliente_nombre'] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

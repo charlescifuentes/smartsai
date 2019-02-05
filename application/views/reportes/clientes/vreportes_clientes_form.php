@@ -91,14 +91,17 @@
               </div>
               <!-- /.form group -->
               <div class="form-group">
-               <label>Activo</label>
+               <label>Estado Negociación</label>
                <div class="input-group">
                 <span class="input-group-addon">
                  <i class="fa fa-check-square-o"></i>
                 </span>
-                <select class="form-control select2" name="cli_activo">
-                 <option value="si">Si</option>
-                 <option value="no">No</option>
+                <select class="form-control select2" name="estado_cliente">
+                <option selected="selected" value="null"></option>
+                 <?php foreach($testados as $testado): ?>
+                    <option value=<?php echo $testado['id_estado_cliente'] ?>><?php echo $testado['estado_cliente_nombre'] ?></option>
+                 <?php endforeach; ?>
+                </select>
                 </select>
                </div>
                 <!-- /.input group -->

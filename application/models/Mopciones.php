@@ -32,6 +32,12 @@ class Mopciones extends CI_Model {
             return $query->result_array();
         }
 
+        public function get_estados_cliente()
+        {
+            $query = $this->db->get('sai_estado_clientes');
+            return $query->result_array();
+        }
+
         public function get_ciudades()
         {
             $query = $this->db->get('sai_ciudades');
@@ -170,7 +176,7 @@ class Mopciones extends CI_Model {
             return $this->db->insert('sai_objetivos', $data);
         }
 
-        /* -------------------- Tipos de Propiedad------------------------------------------------- */
+        /* -------------------- Tipos de Cliente ------------------------------------------------- */
         public function get_tipo_cliente($str)
         {
             $query = $this->db->get_where('sai_tipo_clientes', array('id_tipo_cliente' => $str));
@@ -208,6 +214,46 @@ class Mopciones extends CI_Model {
             );
 
             return $this->db->insert('sai_tipo_clientes', $data);
+        }
+
+        /* -------------------- Estados de Cliente ------------------------------------------------- */
+        public function get_estado_cliente($str)
+        {
+            $query = $this->db->get_where('sai_estado_clientes', array('id_estado_cliente' => $str));
+            return $query->row_array();
+        }
+
+        public function update_estado_cliente()
+        {
+            $id_tipo = $this->input->post('id_estado_cliente');
+
+            $data = array(
+            'estado_cliente_nombre' => $this->input->post('estado_cliente_nombre')
+            );
+
+            $this->db->where('id_estado_cliente', $id_tipo);
+            $this->db->update('sai_estado_clientes', $data);
+        }
+
+        public function delete_estado_cliente($id)
+        {
+            if ( ! $this->db->delete('sai_estado_clientes', array('id_estado_cliente' => $id)))
+            {
+                return $error = $this->db->error(); // Has keys 'code' and 'message'
+            }
+            else{
+                return 1;
+            }
+        }
+
+        public function insert_estado_cliente()
+        {
+            $data = array(
+            'id_estado_cliente' => $this->input->post('id_estado_cliente'),
+            'estado_cliente_nombre' => $this->input->post('estado_cliente_nombre')
+            );
+
+            return $this->db->insert('sai_estado_clientes', $data);
         }
 
         /* -------------------- Ciudades ---------------------------------------------- */

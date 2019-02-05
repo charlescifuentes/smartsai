@@ -96,6 +96,7 @@
                      <th>Interés</th>
                      <th>Presupuesto</th>
                      <th>Tipo</th>
+                     <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -108,6 +109,7 @@
                      <td><?php echo $cliente['tipo_nombre'] ?></td>
                      <td><?php echo "$ ".number_format($cliente['presupuesto'],0,',','.'); ?></td>
                      <td><?php echo $cliente['tipo_cliente_nombre'] ?></td>
+                     <td><?php echo $cliente['estado_cliente_nombre'] ?></td>
                     </tr>
                 <?php endforeach; ?>
                   </tbody>
