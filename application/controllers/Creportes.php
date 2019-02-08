@@ -10,6 +10,7 @@ class Creportes extends CI_Controller {
         $this->load->model('mclientes');
         $this->load->model('mreportes');
         $this->load->model('mpropiedades');
+        $this->load->model('musers');
     }
 
     /* ------------------ Reporte Clientes --------------------------------- */
@@ -131,6 +132,52 @@ class Creportes extends CI_Controller {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
         $this->load->view('reportes/propiedades/vreportes_propiedades_print',$data);
+        $this->load->view('templates/footer');
+    }
+
+    /* ------------------ Reporte Tareas --------------------------------- */
+
+    public function report_tareas()
+    {
+        $data['title'] = "Formulario Reporte de Tareas";
+
+        $data['tusers'] = $this->musers->get_users();
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/tareas/vreportes_tareas_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function report_tareas_result()
+    {
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
+        $data['user_name'] = $this->input->post('user_name');
+
+        $data['results'] = $this->mreportes->tareas_report($data['fecha_desde'], $data['fecha_hasta'], $data['user_name']);
+
+        $data['title'] = "Reporte de Tareas";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/tareas/vreportes_tareas_result',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function impr_rep_tareas($fecha_desde, $fecha_hasta, $user_name)
+    {
+        $data['fecha_desde'] = $fecha_desde;
+        $data['fecha_hasta'] = $fecha_hasta;
+        $data['user_name'] = $user_name;
+
+        $data['results'] = $this->mreportes->tareas_report($data['fecha_desde'], $data['fecha_hasta'], $data['user_name']);
+
+        $data['title'] = "Reporte de Tareas Impresión";
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/menu');
+        $this->load->view('reportes/tareas/vreportes_tareas_print',$data);
         $this->load->view('templates/footer');
     }
 

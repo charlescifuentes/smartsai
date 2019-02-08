@@ -64,7 +64,7 @@
         <li><a href="<?php echo base_url('ctareas');?>"><i class="fa fa-line-chart"></i> <span>Tareas</span></a></li>
         <?php } ?>
         <?php if($user_rol == "Administrador" || "Comercial"){ ?>
-        <li><a href="<?php echo base_url('ctareas');?>"><i class="fa fa-users"></i> <span>Cronograma</span></a></li>
+        <li><a href="<?php echo base_url('ctareas/cronograma_tareas');?>"><i class="fa fa-users"></i> <span>Cronograma</span></a></li>
         <?php } ?>
         <?php if($user_rol == "Administrador"){ ?>
         <li><a href="<?php echo base_url('cingresos');?>"><i class="fa fa-automobile"></i> <span>Ingresos</span></a></li>
@@ -86,6 +86,9 @@
             <?php } ?>
             <?php if($user_rol == "Administrador" || "Comercial"){ ?>
             <li><a href="<?php echo base_url('creportes/report_propiedades');?>"><i class="fa fa-circle-o"></i> Propiedades</a></li>
+            <?php } ?>
+            <?php if($user_rol == "Administrador" || "Comercial"){ ?>
+            <li><a href="<?php echo base_url('creportes/report_tareas');?>"><i class="fa fa-circle-o"></i> Tareas</a></li>
             <?php } ?>
             <?php if($user_rol == "Administrador"){ ?>
             <li>

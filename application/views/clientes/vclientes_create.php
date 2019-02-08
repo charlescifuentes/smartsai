@@ -40,14 +40,15 @@
                             <div class="form-group">
                                 <label for="fecha_creacion" class="col-sm-2 control-label">Fecha Creación:</label>
                                 <div class="col-sm-10">
-                                 <?php date_default_timezone_set('America/Bogota'); ?>
-                                    <input type="date" class="form-control" name="fecha_creacion" value="<?php echo date("Y-m-d");?>">                  </div>
+                                    <?php date_default_timezone_set('America/Bogota'); ?>
+                                    <input type="date" class="form-control" name="fecha_creacion" value="<?php echo date("Y-m-d");?>">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="nombres" class="col-sm-2 control-label">Nombres</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="nombres" required>
-                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="telefono" class="col-sm-2 control-label">Teléfono</label>

@@ -15,6 +15,59 @@
       <!-- Info boxes -->
       <div class="row">
         <div class="col-md-12">
+          <!-- TABLE: TAREAS DEL DIA -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tareas del dia</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Fecha Creación</th>
+                      <th>Descripción</th>
+                      <th>Fecha a Realizar</th>
+                      <th>Encargado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php foreach($tareas as $tarea): ?>
+                   <tr>
+                    <td><?php echo $tarea['id_tarea'] ?></td>
+                    <td><?php echo date("d-m-Y", strtotime($tarea['tarea_fecha_inicio'])); ?></td>
+                    <td><?php echo $tarea['tarea_descripcion'] ?></td>
+                    <td><?php echo date("d-m-Y", strtotime($tarea['tarea_fecha_fin'])); ?></td>
+                    <td><?php echo $tarea['user_data'] ?></td>
+                   </tr>
+                   <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="<?php echo base_url('ctareas');?>" class="btn btn-sm btn-danger btn-flat pull-left">Ver todas</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <!-- Info boxes -->
+      <div class="row">
+        <div class="col-md-12">
           <!-- TABLE: ÚLTIMAS PROPIEDADES -->
           <div class="box box-success">
             <div class="box-header with-border">

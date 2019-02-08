@@ -79,6 +79,20 @@ class Mreportes extends CI_Model {
             return $query = $this->db->get()->result_array();
         }
 
+        /* ------------------ Reporte tareas --------------------------------- */
+        public function tareas_report($fecha_desde, $fechas_hasta, $user_name)
+        {
+            $this->db->select('*');
+    	    $this->db->from('sai_tareas');
+            $this->db->join('sai_users','sai_users.user_name = sai_tareas.user_name');
+            $this->db->where('sai_tareas.tarea_fecha_fin >=', $fecha_desde);
+            $this->db->where('sai_tareas.tarea_fecha_fin <=', $fechas_hasta);
+            if($user_name != "null"){
+            $this->db->where('sai_tareas.user_name',$user_name);
+            }
+            return $query = $this->db->get()->result_array();
+        }
+
         /* ------------------ Reporte Ingresos Fijos Detallado --------------------------------- */
         public function ingresos_report($fecha_desde, $fechas_hasta, $tipo_ingreso)
         {   

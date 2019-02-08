@@ -9,6 +9,7 @@ class Chome extends CI_Controller {
         $this->load->model('mhome');
         $this->load->model('mopciones');
         $this->load->model('mclientes');
+        $this->load->model('mtareas');
     }
 
     public function index()
@@ -17,6 +18,7 @@ class Chome extends CI_Controller {
 
         $data['propiedades'] = $this->mhome->get_last_propiedades();
         $data['clientes'] = $this->mhome->get_last_clientes();
+        $data['tareas'] = $this->mtareas->get_tareas_today();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');
