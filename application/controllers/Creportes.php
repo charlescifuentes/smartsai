@@ -37,10 +37,12 @@ class Creportes extends CI_Controller {
         $data['id_interes'] = $this->input->post('interes');
         $data['presupuesto_desde'] = $this->input->post('presupuesto_desde');
         $data['presupuesto_hasta'] = $this->input->post('presupuesto_hasta');
+        $data['fecha_desde'] = $this->input->post('fecha_desde');
+        $data['fecha_hasta'] = $this->input->post('fecha_hasta');
         $data['cliente_nombre'] = $this->input->post('cliente_nombre');
         $data['id_estado_cliente'] = $this->input->post('estado_cliente');
 
-        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['cliente_nombre'], $data['id_estado_cliente']);
+        $data['results'] = $this->mreportes->clientes_report($data['id_tipo_cliente'], $data['id_interes'], $data['presupuesto_desde'], $data['presupuesto_hasta'], $data['fecha_desde'], $data['fecha_hasta'], $data['cliente_nombre'], $data['id_estado_cliente']);
 
         $data['title'] = "Reporte de Clientes Resultado";
 

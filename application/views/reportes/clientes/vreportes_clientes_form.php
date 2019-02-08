@@ -74,6 +74,31 @@
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
+              <!-- Fecha Desde -->
+              <div class="form-group">
+                <label>Fecha Desde:</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <?php date_default_timezone_set('America/Bogota'); ?>
+                  <input type="date" class="form-control" name="fecha_desde" value="<?php echo date("Y-m-d");?>">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+              <!-- Fecha Hasta -->
+              <div class="form-group">
+                <label>Fecha Hasta:</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="date" class="form-control" name="fecha_hasta" value="<?php echo date("Y-m-d");?>">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
               <div class="form-group">
                <label>Nombres</label>
                <div class="input-group">

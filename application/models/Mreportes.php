@@ -7,7 +7,7 @@ class Mreportes extends CI_Model {
         }
 
         /* ------------------ Reporte Clientes --------------------------------- */
-        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $cliente_nombre, $estado_cliente)
+        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $fecha_desde, $fecha_hasta, $cliente_nombre, $estado_cliente)
         {
             $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_clientes.anotaciones, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre');
     		$this->db->from('sai_clientes');
@@ -15,22 +15,28 @@ class Mreportes extends CI_Model {
             $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
             $this->db->join('sai_estado_clientes','sai_estado_clientes.id_estado_cliente = sai_clientes.id_estado_cliente');
             if($id_tipo_cliente != "null"){
-            $this->db->where('sai_clientes.id_tipo_cliente', $id_tipo_cliente);
+                $this->db->where('sai_clientes.id_tipo_cliente', $id_tipo_cliente);
             }
             if($id_interes != "null"){
-            $this->db->where('sai_clientes.id_tipo', $id_interes);
+                $this->db->where('sai_clientes.id_tipo', $id_interes);
             }
             if($presupuesto_desde != "null"){
-            $this->db->where('sai_clientes.presupuesto >=', $presupuesto_desde);
+                $this->db->where('sai_clientes.presupuesto >=', $presupuesto_desde);
             }
             if($presupuesto_hasta != "null"){
-            $this->db->where('sai_clientes.presupuesto <=', $presupuesto_hasta);
+                $this->db->where('sai_clientes.presupuesto <=', $presupuesto_hasta);
+            }
+            if($fecha_desde != "null"){
+                $this->db->where('sai_clientes.fecha_creacion >=', $fecha_desde);
+            }
+            if($fecha_hasta != "null"){
+                $this->db->where('sai_clientes.fecha_creacion <=', $fecha_hasta); 
             }
             if($cliente_nombre != "null"){
-            $this->db->where('sai_clientes.id_cliente', $cliente_nombre);
+                $this->db->where('sai_clientes.id_cliente', $cliente_nombre);
             }
             if($estado_cliente != "null"){
-            $this->db->where('sai_clientes.id_estado_cliente', $estado_cliente);
+                $this->db->where('sai_clientes.id_estado_cliente', $estado_cliente);
             }
             return $query = $this->db->get()->result_array();
         }
