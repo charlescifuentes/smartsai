@@ -31,6 +31,7 @@ class Cclientes extends CI_Controller {
         $data['cliente'] = $this->mclientes->get_cliente($str);
         $data['tpropiedades'] = $this->mopciones->get_tipos_propiedad();
         $data['tclientes'] = $this->mopciones->get_tipos_cliente();
+        $data['testados'] = $this->mopciones->get_estados_cliente();
         $data['users'] = $this->musers->get_users();
         $this->load->view('templates/header',$data);
         $this->load->view('templates/menu');

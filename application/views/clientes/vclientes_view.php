@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="cli_activo" class="col-sm-2 control-label">Asesor</label>
+                                <label for="user_name" class="col-sm-2 control-label">Asesor</label>
                                 <div class="col-sm-10">
                                     <select class="form-control select2" name="user_name" style="width: 100%;">
                                         <option value="<?php echo $cliente['user_name'] ?>" selected="selected"><?php echo $cliente['user_data'] ?></option>
