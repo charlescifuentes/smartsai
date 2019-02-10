@@ -38,6 +38,7 @@
                 <th>Presupuesto</th>
                 <th>Tipo</th>
                 <th>Estado</th>
+                <th>Asesor</th>
                 <th>Observación</th>
                </tr>
               </thead>
@@ -52,6 +53,7 @@
                   <td><p style="font-size:12px;"><?php echo "$ ".number_format($result['presupuesto'],0,',','.'); ?></p></td>
                   <td><p style="font-size:12px;"><?php echo $result['tipo_cliente_nombre'] ?></p></td>
                   <td><p style="font-size:12px;"><?php echo $result['estado_cliente_nombre'] ?></p></td>
+                  <td><p style="font-size:12px;"><?php echo $result['user_data'] ?></p></td>
                   <td><p style="font-size:12px;"><?php echo $result['anotaciones'] ?></p></td>
                 </tr>
                 <?php endforeach; ?>

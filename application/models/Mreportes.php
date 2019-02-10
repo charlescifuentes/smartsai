@@ -7,13 +7,14 @@ class Mreportes extends CI_Model {
         }
 
         /* ------------------ Reporte Clientes --------------------------------- */
-        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $fecha_desde, $fecha_hasta, $cliente_nombre, $estado_cliente)
+        public function clientes_report($id_tipo_cliente, $id_interes, $presupuesto_desde, $presupuesto_hasta, $fecha_desde, $fecha_hasta, $cliente_nombre, $estado_cliente, $user_name)
         {
-            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_clientes.anotaciones, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre');
+            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_clientes.anotaciones, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre, sai_users.user_data');
     		$this->db->from('sai_clientes');
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_clientes.id_tipo');
             $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
             $this->db->join('sai_estado_clientes','sai_estado_clientes.id_estado_cliente = sai_clientes.id_estado_cliente');
+            $this->db->join('sai_users','sai_users.user_name = sai_clientes.user_name');
             if($id_tipo_cliente != "null"){
                 $this->db->where('sai_clientes.id_tipo_cliente', $id_tipo_cliente);
             }
@@ -37,6 +38,9 @@ class Mreportes extends CI_Model {
             }
             if($estado_cliente != "null"){
                 $this->db->where('sai_clientes.id_estado_cliente', $estado_cliente);
+            }
+            if($user_name != "null"){
+                $this->db->where('sai_users.user_name', $user_name);
             }
             return $query = $this->db->get()->result_array();
         }

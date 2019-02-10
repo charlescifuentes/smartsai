@@ -20,7 +20,7 @@
               <h3 class="box-title"></h3>
               <?php date_default_timezone_set('America/Bogota'); ?>
               <h3 class="box-title">Reporte de Clientes</h3>
-              <?php echo anchor('creportes/impr_rep_clientes/'.$id_tipo_cliente.'/'.$id_interes.'/'.$presupuesto_desde.'/'.$presupuesto_hasta.'/'.$cliente_nombre.'/'.$id_estado_cliente.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
+              <?php echo anchor('creportes/impr_rep_clientes/'.$id_tipo_cliente.'/'.$id_interes.'/'.$presupuesto_desde.'/'.$presupuesto_hasta.'/'.$fecha_desde.'/'.$fecha_hasta.'/'.$cliente_nombre.'/'.$id_estado_cliente.'/'.$user_name.'/', 'Imprimir', array('class' => 'btn btn-primary btn-xm pull-right','title'=>'Imprimir Reporte')); ?>
             </div>
             <div class="box-body">
              <div class="table-responsive">
@@ -35,6 +35,7 @@
                   <th>Presupuesto</th>
                   <th>Tipo</th>
                   <th>Estado</th>
+                  <th>Asesor</th>
                   <th>Observación</th>
                 </tr>
                </thead>
@@ -49,6 +50,7 @@
                   <td><?php echo "$ ".number_format($result['presupuesto'],0,',','.'); ?></td>
                   <td><?php echo $result['tipo_cliente_nombre'] ?></td>
                   <td><?php echo $result['estado_cliente_nombre'] ?></td>
+                  <td><?php echo $result['user_data'] ?></td>
                     <?php $anotaciones = $result['anotaciones'] ?>
                     <?php $anotaciones = preg_replace("/[\r\n|\n|\r]+/", " ", $anotaciones); ?>
                   <td><?php echo '<button type="button" class="btn btn-info btn-sm" onclick="modal_anotacion(\''.$anotaciones.'\')">Mostrar</button>'?></td>
@@ -65,6 +67,7 @@
                   <th>Presupuesto</th>
                   <th>Tipo</th>
                   <th>Estado</th>
+                  <th>Asesor</th>
                   <th>Observación</th>
                 </tr>
                </tfoot>

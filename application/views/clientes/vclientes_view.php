@@ -102,13 +102,13 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="fecha_contactar" class="col-sm-2 control-label">Fecha a Contáctar:</label>
                                 <div class="col-sm-10">
                                     <?php date_default_timezone_set('America/Bogota'); ?>
                                     <input type="date" class="form-control" name="fecha_contactar" value="<?php echo date("Y-m-d", strtotime($cliente['fecha_contactar'])); ?>">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="cli_activo" class="col-sm-2 control-label">Estado de Negociación</label>
                                 <div class="col-sm-10">
@@ -116,6 +116,17 @@
                                         <option value="<?php echo $cliente['id_estado_cliente'] ?>" selected="selected"><?php echo $cliente['estado_cliente_nombre'] ?></option>
                                         <?php foreach($testados as $testado): ?>
                                         <option value=<?php echo $testado['id_estado_cliente'] ?>><?php echo $testado['estado_cliente_nombre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cli_activo" class="col-sm-2 control-label">Asesor</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control select2" name="user_name" style="width: 100%;">
+                                        <option value="<?php echo $cliente['user_name'] ?>" selected="selected"><?php echo $cliente['user_data'] ?></option>
+                                        <?php foreach($users as $user): ?>
+                                        <option value=<?php echo $user['user_name'] ?>><?php echo $user['user_data'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

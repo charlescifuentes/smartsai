@@ -33,6 +33,7 @@
                   <th>Presupuesto</th>
                   <th>Tipo</th>
                   <th>Estado</th>
+                  <th>Asesor</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -48,6 +49,7 @@
                   <td><?php echo "$ ".number_format($cliente['presupuesto'],0,',','.'); ?></td>
                   <td><?php echo $cliente['tipo_cliente_nombre'] ?></td>
                   <td><?php echo $cliente['estado_cliente_nombre'] ?></td>
+                  <td><?php echo $cliente['user_data'] ?></td>
                   <td><?php echo anchor('cclientes/view/'.$cliente['id_cliente'].'', 'Ver', 'title="Ver Cliente"'); ?></td>
                   <td><button type="button" class="btn btn-danger btn-xs" onclick='borrar_cliente("<?php echo $cliente['id_cliente'] ?>");' id="btn_delete" title="Borrar este item">Borrar</button></td>
                 </tr>
@@ -63,6 +65,7 @@
                   <th>Presupuesto</th>
                   <th>Tipo</th>
                   <th>Estado</th>
+                  <th>Asesor</th>
                   <th></th>
                   <th></th>
                 </tr>

@@ -8,11 +8,12 @@ class Mclientes extends CI_Model {
 
         public function get_clientes()
         {
-            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre');
+            $this->db->select('sai_clientes.id_cliente, sai_clientes.fecha_creacion, sai_clientes.nombres, sai_clientes.telefono, sai_clientes.presupuesto, sai_tipo_propiedades.tipo_nombre, sai_tipo_clientes.tipo_cliente_nombre, sai_estado_clientes.estado_cliente_nombre, sai_users.user_data');
     		$this->db->from('sai_clientes');
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_clientes.id_tipo');
             $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
             $this->db->join('sai_estado_clientes','sai_estado_clientes.id_estado_cliente = sai_clientes.id_estado_cliente');
+            $this->db->join('sai_users','sai_users.user_name = sai_clientes.user_name');
             return $query = $this->db->get()->result_array();
         }
 
@@ -23,6 +24,7 @@ class Mclientes extends CI_Model {
     		$this->db->join('sai_tipo_propiedades','sai_tipo_propiedades.id_tipo = sai_clientes.id_tipo');
             $this->db->join('sai_tipo_clientes','sai_tipo_clientes.id_tipo_cliente = sai_clientes.id_tipo_cliente');
             $this->db->join('sai_estado_clientes','sai_estado_clientes.id_estado_cliente = sai_clientes.id_estado_cliente');
+            $this->db->join('sai_users','sai_users.user_name = sai_clientes.user_name');
             $this->db->where('id_cliente',$str);
             return $query = $this->db->get()->row_array();
         }
@@ -42,8 +44,9 @@ class Mclientes extends CI_Model {
             'caracteristicas_interes' => $this->input->post('caracteristicas_interes'),
             'anotaciones' => $this->input->post('anotaciones'),
             'id_tipo_cliente' => $this->input->post('id_tipo_cliente'),
-            'fecha_contactar' => $this->input->post('fecha_contactar'),
-            'id_estado_cliente' => $this->input->post('id_estado_cliente')
+            //'fecha_contactar' => $this->input->post('fecha_contactar'),
+            'id_estado_cliente' => $this->input->post('id_estado_cliente'),
+            'user_name' => $this->input->post('user_name')
             );
 
             $this->db->where('id_cliente', $id_cliente);
@@ -75,8 +78,9 @@ class Mclientes extends CI_Model {
             'caracteristicas_interes' => $this->input->post('caracteristicas_interes'),
             'anotaciones' => $this->input->post('anotaciones'),
             'id_tipo_cliente' => $this->input->post('id_tipo_cliente'),
-            'fecha_contactar' => $this->input->post('fecha_contactar'),
-            'id_estado_cliente' => $this->input->post('id_estado_cliente')
+            //'fecha_contactar' => $this->input->post('fecha_contactar'),
+            'id_estado_cliente' => $this->input->post('id_estado_cliente'),
+            'user_name' => $this->input->post('user_name')
             );
 
             return $this->db->insert('sai_clientes', $data);
