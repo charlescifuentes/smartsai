@@ -89,7 +89,7 @@
                                 <label for="anotaciones" class="col-sm-2 control-label">Anotaciones</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="3" name="anotaciones" placeholder="Ingrese anotaciones del Cliente"><?php echo $cliente['anotaciones'] ?></textarea>
-                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="id_tipo_cliente" class="col-sm-2 control-label">Tipo Cliente</label>

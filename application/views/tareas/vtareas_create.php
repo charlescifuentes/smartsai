@@ -42,7 +42,7 @@
                                     <label for="tarea_descripcion" class="col-sm-2 control-label">Descripción</label>
                                     <div class="col-sm-10">
                                         <?php date_default_timezone_set('America/Bogota'); ?>
-                                        <input type="text" class="form-control" name="tarea_descripcion">
+                                        <textarea class="form-control" rows="3" name="tarea_descripcion" placeholder="Ingrese una descripción"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
